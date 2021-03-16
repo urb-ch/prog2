@@ -31,7 +31,7 @@ Gnome Bard - strength 0, intelligence 8, dexterity 1, charisma 8
 
 Based on the skill value for each character decisions should be made appropriately. Each problem has different ways to solve them and needs a specific threshold of a skill value to be successful. If the skill value is too low the action will fail and the character will lose health points. If the health points reach 0 the player looses the game.
 
-Idea 3:
+Idea 3: scrapped outside of my skilllevel
 PC Application monitoring Software
 
 The goal is to create a tool that automatically tracks which program has been opened on the pc and for how long the program is being used. Additionally if a program e.g browser has multiple tabs open each tab will be measured individually.  
@@ -55,3 +55,8 @@ What will be seen on the webapp:
 3. Comparison of most used apps
 4. Show "time lost" if time has been spent with non productive apps
 
+Idea 4:
+Working hours tracker.
+
+The user will enter his working hours and the data will be stored. The data will then be check against the official working hours and over/undertime will be calculated. The user will get an overview how many hours he work per day and get a report how much over or undertime he currently has.
+The programm will also include a possibility to see when the user usually generates over- or undertime.
