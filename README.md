@@ -12,8 +12,11 @@ Slytherin = cunning/ambitious
 Hufflepuf = Loyal  
 Ravenclaw = Wise  
 
+Additional function  
+Once the sorting is completed the user will be asked questions about all the houses. If the user knows more about a specific house than an other house the house sorting will be adjusted and the house with the most correct answers and associated traits will be the new house assigned to the user.
 
-Idea 2:  
+
+Idea 2:  scrapped
 Text based Role play game.
 
 The user will play through a text based game which differs based on the decisions he takes along the way. The user will start of by selecting one of 4 characters. Each character has different skills and skill values.
@@ -38,8 +41,8 @@ In the end the data will be visualized in charts and an overview will be availab
 The overall goal will bo to create a productivity software to monitor how much time is wasted with programs not associated with "work".
 
 What does the program need to do:
-1. Monitor activity (where is the user currently working)
-    1.1 Which website is being used
+1. Monitor activity (where is the user currently working)  
+    1.1 Which website is being used  
     1.2 Which app is being used
 2. Start of an automated timer once user opens an app or website
 3. Automated saving of data in a Json file
@@ -47,7 +50,7 @@ What does the program need to do:
 
 What will be seen on the webapp:
 1. Overall time spent on pc
-2. Spent time per app
+2. Spent time per app  
     2.1 Time spent per website
 3. Comparison of most used apps
 4. Show "time lost" if time has been spent with non productive apps
