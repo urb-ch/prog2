@@ -13,5 +13,34 @@ Needed functions:
 5. Print on which days most over- undertime is generated  
 6. Visualize data
 
+Step by step idea Frontend:
+
+Mainpage:
+1. User opens webapp
+2. User sees functions to choose   
+   2.1 Zeiterfassung   
+   2.2 Übersicht   
+   2.3 Analyse   
+3. User chooses desired function   
+
+Zeiterfassung:   
+1. User sees fields with Date on the left side and a text field to enter an amount of hours in the middle and a submit button on the right   
+2. User enters hours worked to associated date in the text field   
+3. User presses the submit button  
+
+Übersicht:  
+1. User sees an overview over his amount worked associated to the specific date 
+2. User sees overtime/undertime highlighted   
+
+Analyse:
+1. User sees multiple charts  
+    2.1 Total hours worked  
+        2.1.1 option to filter by week, month, year  
+    2.2 Overtime  
+        2.2.1 Total overtime  
+        2.2.2 Overtime occurence   
+            2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week
+   
+
 
 
