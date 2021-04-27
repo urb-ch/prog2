@@ -34,11 +34,11 @@ Zeiterfassung:
 
 Analyse:
 1. User sees multiple charts  
-    2.1 Total hours worked  
+    2.1 Total hours worked     
         2.1.1 option to filter by week, month, year  
-    2.2 Overtime  
+    2.2 Overtime     
         2.2.1 Total overtime  
-        2.2.2 Overtime occurence   
+        2.2.2 Overtime occurence  
             2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week
    
 
