@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zeiterfassung</title>
+    <title>Title</title>
 </head>
 <body>
- <h1>Arbeitsstunden Montag</h1>
-    <form method="POST">
-        <input type="text" name="stunden" placeholder="Bitte geben Sie Ihre gearbeiteten Stunden ein">
-        <button type="submit">Senden</button>
+<h1>Select a date</h1>
+<form action="" method ="POST" name="myform">
+    {{form.csrt_token}} <!-- idk what this is. More research needed -->
+    {{form.chosen_date.label}} {{form.chosen_date(class="datepicker")}} {{form.hidden_tag()}} <!-- give label for chosen_date, form class datepicker from Flask, -->
+    {{form.submit()}} <!-- call submission form -->
     </form>
-<h1>Arbeitsstunden Dienstag</h1>
-    <form method="POST">
-        <input type="text" name="stunden" placeholder="Bitte geben Sie Ihre gearbeiteten Stunden ein">
-        <button type="submit">Senden</button>
-    </form>
+<h1></h1>
 </body>
 </html>

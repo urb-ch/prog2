@@ -1,24 +1,28 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms.fields.html5 import DateField
+from wtforms import validators, SubmitField
 import datasave
 
 app = Flask("stundenblatt")
 
-@app.route('/')
+app.config["SECRET_KEY"] = "!1alpaka2?"
+
+
+class DateForm(FlaskForm): #create class for DateForm
+    chosen_date = DateField("Chosen Date", format="%Y-%m-%d", validators=(validators.DataRequired(),)) #format the DateField and set a validator
+    submit = SubmitField("Submit") #variable for submit
+
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return "Herzlich willkommen zum Arbeitszeiterfassungssystem"
-
-@app.route("/erfassen/", methods=['GET', 'POST'])
-def zeit_erfassen():
-    if request.method == 'POST':
-        stunden = request.form['stunden']
-        zeitpunkt, stunden = datasave.zeit_erfassen(stunden)
-        rueckgabe_string = "Gespeichert: " + stunden + " um " + str(zeitpunkt)
-        return rueckgabe_string
+    form = DateForm()
+    if form.validate_on_submit(): #validiert ob submit durchgeführt wurde wurde
+        datasave.zeit_erfassen(form.chosen_date) #call datasave program and give form.chosen_date
 
 
-    return render_template("index.html")
+    return render_template("index.html", form=form)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
