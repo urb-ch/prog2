@@ -5,9 +5,9 @@ The user will enter his working hours and the data will be stored. The data will
 The programm will also include a possibility to see when the user usually generates over- or undertime.
 
 Needed functions:
-1. User working hour entries  
+1. User working hour entries  - DONE
    1.1 Daily overview (current date)  
-2. Official working hours store  
+2. Official working hours store  - DONE stored in JSON
 3. User working and official hours check  
     3.1. Print over or undertime  
 5. Print on which days most over- undertime is generated  
@@ -24,9 +24,9 @@ Mainpage:
 3. User chooses desired function   
 
 Zeiterfassung:   
-1. User sees fields with Date on the left side and a text field to enter an amount of hours in the middle and a submit button on the right   
-2. User enters hours worked to associated date in the text field   
-3. User presses the submit button  
+1. User sees fields with Date on the left side and a text field to enter an amount of hours in the middle and a submit button on the right   - DONE
+2. User enters hours worked to associated date in the text field   - DONE
+3. User presses the submit button  - DONE
 
 Übersicht:  
 1. User sees an overview over his amount worked associated to the specific date 
