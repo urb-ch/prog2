@@ -7,8 +7,8 @@
 <body>
 <h1>Select a date</h1>
 <form action="" method ="POST" name="myform">
-    {{form.csrt_token}} <!-- idk what this is. More research needed -->
     {{form.chosen_date.label}} {{form.chosen_date(class="datepicker")}} {{form.hidden_tag()}} <!-- give label for chosen_date, form class datepicker from Flask, -->
+    {{form.hours.label}}{{form.hours}}
     {{form.submit()}} <!-- call submission form -->
     </form>
 <h1></h1>
