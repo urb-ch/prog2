@@ -1,27 +1,52 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms.fields.html5 import DateField
-from wtforms import validators, SubmitField, StringField
+from wtforms import validators, SubmitField, FloatField  # using wtforms because I need validators and a datefield
 import datasave
 
 app = Flask("stundenblatt")
 
-app.config["SECRET_KEY"] = "!1fabod2?"  # https://github.com/CarlosIUSalazar/Python-Flask-DatePicker #Why is this needed?
+app.config["SECRET_KEY"] = "!1fabod2?"  # https://github.com/CarlosIUSalazar/Python-Flask-DatePicker WTForms will use the SECRET_KEY as a salt to create a CSRF token. The csrf_token is generated automatically by the WTForms and it changes each time the page is rendered. This helps us to protect our site against CSRF attacks.
 
 
-class MyForm(FlaskForm):   # create class to define what MyForm is - MyForm is based on FlaskForm
-    chosen_date = DateField("Chosen Date", format="%Y-%m-%d", validators=(validators.DataRequired(),))  # format the DateField(WTForms) and set tha a validator is required otherwise error is given
-    hours = StringField("Geben Sie ihre gearbeiteten Stunden ein:  ", validators=(validators.DataRequired(),))  # Create StringField for the hours, validator needed, currently getting an error if I put one here as well
+class MyForm(FlaskForm):   # create class to define what MyForm is - MyForm is based on FlaskForm objektorientert darum class. Wird genutzt um die validierung durch submit für die ganze Klasse durchzuführen.
+    chosen_date = DateField("Please choose a date", format="%Y-%m-%d", validators=(validators.DataRequired(),))  # format the DateField(WTForms) and set a validator. this is required otherwise error is given
+    hours = FloatField("Enter the amount of worked hours:  ", validators=(validators.DataRequired(),))  # Create StringField for the hours, validator needed, currently getting an error if I put one here as well
     submit = SubmitField("Submit")  # variable for submit
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    datum = MyForm()
-    if datum.validate_on_submit():  # validiert ob submit durchgeführt wurde wurde
-        datasave.zeit_erfassen(datum.chosen_date.data, datum.hours.data)  # call datasave program and give form.chosen_date
+    return render_template("index.html")
 
-    return render_template("index.html", form=datum)
+
+@app.route("/erfassen", methods=["GET", "POST"])
+def erfassen():
+    form_data = MyForm()  # instanzierung der klasse
+    # confirmation_date = str(form_data.chosen_date.data)
+    # confirmation_hours = str(form_data.hours.data)
+    # confirmation_string = "You have worked " + confirmation_hours + " hours on the " + confirmation_date
+    if form_data.validate_on_submit():  # validiert ob submit durchgeführt wurde wurde
+        datasave.zeit_erfassen(form_data.chosen_date.data, form_data.hours.data)  # call datasave program and give form.chosen_date
+
+    return render_template("erfassen.html", form=form_data)
+
+
+@app.route("/uebersicht", methods=["GET", "POST"])
+def uebersicht():
+    if request.method == "GET":
+        datasave.ausgabe_total()
+    daten = datasave.ausgabe_total()
+    return render_template("uebersicht.html", data=daten)  # returning data to call it via jinja later
+
+
+@app.route("/insights", methods=["GET", "POST"])
+def insights():
+    if request.method == "GET":
+        datasave.ausgabe_overtime()
+    daten = datasave.ausgabe_overtime()
+    # try and loop through key based on [] and collect as month
+    return render_template("insights.html", data=daten)
 
 
 if __name__ == "__main__":

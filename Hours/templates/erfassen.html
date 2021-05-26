@@ -1,0 +1,32 @@
+{% include "header.html" %}
+<html lang="en">
+<head>
+    <<title>Zeit Erfassen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <form action="" method ="POST" name="myform">
+            {{form.chosen_date.label}} {{form.chosen_date(class="datepicker")}} {{form.hidden_tag()}} <!-- give label for chosen_date, form class datepicker from Flask, The csrf_token is generated automatically by the WTForms and it changes each time the page is rendered. This helps us to protect our site against CSRF attacks. -->
+            <br>
+            {{form.hours.label}} {{form.hours}} {{form.submit()}} <!-- call submission form -->
+        </form>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <p>You have submitted {{form.hours.data}} working hours for the {{form.chosen_date.data}}</p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        {% if form.hours.data != None %} <!--  which  -->
+        <p>To submit a new time entry, please choose a new date and enter the amount of hours worked</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

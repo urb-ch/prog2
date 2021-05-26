@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container"> <p>You generated most overtime on {{ data[2] }} by working {{ data[1] }} hours - This is a {{ data[4] }} </p> </div>
+<!-- <div class="container"> <p>The month you generated most overtime was:  </p> </div> -->
+
+<div class="container"> <p>Your average over-/ undertime is: {{ data[3] }} </p>  {% if data[3] > 1.5|float %}
+    <p>Hi there, it seems like you are making too much overtime on average. Be mindful of your work-life-balance! Make sure you contact your Manager to readjust your projects.
+    If you want to learn more about our company policy on how to improve your work-life-balance please visit <a href="https://www.businessnewsdaily.com/5244-improve-work-life-balance-today.html" target="_blank"> Work-Life-Balance-Tips</a> </p>
+{% endif %} </div>
+
+<div class="container"> <p>Your total overtime is: {{ data[0] }}  </p>  {% if data[0] > 40|float %}
+    <p>Dear user. You have generate more than 40 working hours in overtime. Please contact HR to create a compensation plan</p> <a href="mailto:raphael@urbanetz.ch" target="_blank" class="btn btn-primary">Email Us</a>
+{% endif %} </div>
+</body>
+</html>

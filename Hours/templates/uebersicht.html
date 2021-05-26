@@ -1,0 +1,52 @@
+{% include "header.html" %}
+<html lang="en">
+<head>
+    <title>Insights</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>This is an overview for your submitted workinghours</h2>
+    <p>Select a specific date and press "Enter" to see your submitted working hours and over-/ undertime. To reset the filter please delete the entered date.</p>
+    <input class="form-control" id="myInput" type="date"> <!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_filters_table&stacked=h this is for filtering-->
+    <br>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">hours</th>
+            <th scope="col">over-/undertime</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+      {% for key, value in data.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+            <td>{{ (value - 8)|round(2)}}</td> <!-- https://jinja.palletsprojects.com/en/2.9.x/templates/#round -->
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+<!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_filters_table&stacked=h this is for filtering-->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>
