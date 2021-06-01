@@ -40,7 +40,10 @@ def ausgabe_total():
     except FileNotFoundError:
         datei_inhalt = {}
 
-    return datei_inhalt  # returning list
+    # determine sum of the total time worked
+    sum_of_hours = sum(datei_inhalt.values())
+
+    return datei_inhalt, sum_of_hours # returning list
 
 
 def ueberstunden(hours, chosen_date):
@@ -68,6 +71,7 @@ def ausgabe_overtime():  # https://www.dataquest.io/blog/python-datetime-tutoria
     try:
         with open(ueberstunden_file) as open_file:
             datei_inhalt = json.load(open_file)
+            datei_inhalt = dict(sorted(datei_inhalt.items()))
     except FileNotFoundError:
         datei_inhalt = {}
 
@@ -92,21 +96,5 @@ def ausgabe_overtime():  # https://www.dataquest.io/blog/python-datetime-tutoria
     avg_of_overtime = sum_of_overtime / len(datei_inhalt.values())
     avg_of_overtime = round(avg_of_overtime, 2)
     # print(avg_of_overtime)
-    return sum_of_overtime, max_value, max_keys, avg_of_overtime, return_string
+    return sum_of_overtime, max_value, max_keys, avg_of_overtime, return_string, datei_inhalt
 
-# def month_aggregation(dateiname):
-#     keys = []
-#     for key, value in dateiname.items():
-#         a = key.split("-")
-#         joined_keys = ["".join(a[0:2])]
-#         hours = value
-#         keys.append(joined_keys)
-#     keys = list(set(keys))
-#
-#     for key in keys
-#
-#     # aggregation = {joined_keys:hours} # Neues Dictionary mit jahr und monat. Wenn key == key Summierte hours als values
-#
-#
-# # def visualize():
-#     # work on plotly to visualize over-/ undertime in a plot

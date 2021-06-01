@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms.fields.html5 import DateField
 from wtforms import validators, SubmitField, FloatField  # using wtforms because I need validators and a datefield
+import plotly.express as px
+from plotly.offline import plot
 import datasave
 
 app = Flask("stundenblatt")
@@ -37,16 +39,25 @@ def uebersicht():
     if request.method == "GET":
         datasave.ausgabe_total()
     daten = datasave.ausgabe_total()
-    return render_template("uebersicht.html", data=daten)  # returning data to call it via jinja later
+    return render_template("uebersicht.html", data=daten[0])  # returning data to call it via jinja later
 
 
 @app.route("/insights", methods=["GET", "POST"])
 def insights():
     if request.method == "GET":
         datasave.ausgabe_overtime()
-    daten = datasave.ausgabe_overtime()
-    # try and loop through key based on [] and collect as month
-    return render_template("insights.html", data=daten)
+        datasave.ausgabe_total()
+    working_hours_data = datasave.ausgabe_total()
+    overtime_data = datasave.ausgabe_overtime()
+    fig = px.bar(x=overtime_data[5].keys(), y=overtime_data[5].values(),
+    labels = {
+                 "x" : "Datum",
+                 "y" : "Anzahl Ueberstunden",
+             },
+             title = "Uebersicht Ueberstunden"
+    )
+    div = plot(fig, output_type="div")
+    return render_template("insights.html", overtimedata=overtime_data, viz_div=div, totaltime=working_hours_data)
 
 
 if __name__ == "__main__":
