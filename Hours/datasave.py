@@ -3,6 +3,15 @@ from datetime import datetime
 import calendar
 
 
+def zeit_erfassen(datum, stunden):
+    formatted_date = str(datum)
+    correct_date = formatted_date  # currently transforming datum contents into string as DateForm is otherwise not possible to post in JSON format Object of type DateForm is not JSON serializable
+    correct_hours = stunden  # should be given together with correct_date as individual parameter
+    datei = "arbeitsstunden.json"
+    speichern(datei, correct_hours, correct_date)
+    ueberstunden(correct_hours, correct_date)
+
+
 def speichern(datei, hours, chosen_date):
     try:
         with open(datei) as open_file:
@@ -20,17 +29,6 @@ def speichern(datei, hours, chosen_date):
   # anzahl_stunden = stunden
   # print(anzahl_stunden)
 
-
-def zeit_erfassen(datum, stunden):
-    formatted_date = str(datum)
-    correct_date = formatted_date  # currently transforming datum contents into string as DateForm is otherwise not possible to post in JSON format Object of type DateForm is not JSON serializable
-    correct_hours = stunden  # should be given together with correct_date as individual parameter
-    datei = "arbeitsstunden.json"
-    speichern(datei, correct_hours, correct_date)
-    ueberstunden(correct_hours, correct_date)
-    # insights(correct_date)
-
-
 def ausgabe_total():
     datei = "arbeitsstunden.json"
     try:
@@ -42,6 +40,7 @@ def ausgabe_total():
 
     # determine sum of the total time worked
     sum_of_hours = sum(datei_inhalt.values())
+
 
     return datei_inhalt, sum_of_hours # returning list
 
@@ -60,8 +59,6 @@ def ueberstunden(hours, chosen_date):
 
     with open(ueberstunden_file, "w") as open_file:
         json.dump(datei_inhalt, open_file, indent=4)
-
-    # month_aggregation(datei_inhalt)
 
     # I would like to have an overview on which month I generated most overtime -> should I try and rearrange my dictionary for that to work with keys per month?
 
@@ -98,3 +95,82 @@ def ausgabe_overtime():  # https://www.dataquest.io/blog/python-datetime-tutoria
     # print(avg_of_overtime)
     return sum_of_overtime, max_value, max_keys, avg_of_overtime, return_string, datei_inhalt
 
+def monthly_aggregation():
+    datei = "arbeitsstunden.json"
+    try:
+        with open(datei, "r") as open_file:  # opening datei in reading mode
+            datei_inhalt = json.load(open_file)
+            datei_inhalt = dict(sorted(datei_inhalt.items()))
+    except FileNotFoundError:
+        datei_inhalt = {}
+    test_dict = datei_inhalt
+
+    year_2021 = "2021"
+    january="2021-01"
+    february="2021-02"
+    march="2021-03"
+    april="2021-04"
+    may="2021-05"
+    june="2021-06"
+    july="2021-07"
+    august="2021-09"
+    september="2021-10"
+    october="2021-10"
+    november="2021-11"
+    december="2021-12"
+
+    #work further on this and print all values from testdict that containt the value string from year
+    print("The original dictionary is: " + str(test_dict))
+
+    res_jan = [val for key, val in test_dict.items() if january in key]
+    res_jan = sum(res_jan)
+
+    res_feb = [val for key, val in test_dict.items() if february in key]
+    res_feb = sum(res_feb)
+
+    res_mar = [val for key, val in test_dict.items() if march in key]
+    res_mar = sum(res_mar)
+
+    res_apr = [val for key, val in test_dict.items() if april in key]
+    res_apr = sum(res_apr)
+
+    res_may = [val for key, val in test_dict.items() if may in key]
+    res_may = sum(res_may)
+
+    res_jun = [val for key, val in test_dict.items() if june in key]
+    res_jun = sum(res_jun)
+
+    res_jul = [val for key, val in test_dict.items() if july in key]
+    res_jul = sum(res_jul)
+
+    res_aug = [val for key, val in test_dict.items() if august in key]
+    res_aug = sum(res_aug)
+
+    res_sep = [val for key, val in test_dict.items() if september in key]
+    res_sep = sum(res_sep)
+
+    res_oct = [val for key, val in test_dict.items() if october in key]
+    res_oct = sum(res_oct)
+
+    res_nov = [val for key, val in test_dict.items() if november in key]
+    res_nov = sum(res_nov)
+
+    res_dec = [val for key, val in test_dict.items() if december in key]
+    res_dec = sum(res_dec)
+
+    res_year_2021 = [val for key, val in test_dict.items() if year_2021 in key]
+    sum_res_year_2021 = sum(res_year_2021)
+    print("Total worked hours in January: " + str(res_jan))
+    print("Total worked hours in February: " + str(res_feb))
+    print("Total worked hours in March: " + str(res_mar))
+    print("Total worked hours in April: " + str(res_apr))
+    print("Total worked hours in May: " + str(res_may))
+    print("Total worked hours in June: " + str(res_jun))
+    print("Total worked hours in July: " + str(res_jul))
+    print("Total worked hours in August: " + str(res_aug))
+    print("Total worked hours in September: " + str(res_sep))
+    print("Total worked hours in October: " + str(res_oct))
+    print("Total worked hours in November: " + str(res_nov))
+    print("Total worked hours in December: " + str(res_dec))
+    print("Total worked hours in 2021: " + str(sum_res_year_2021))
+    return res_jan, res_feb, res_mar, res_apr, res_may, res_jun, res_jul, res_aug, res_sep, res_oct, res_nov, res_dec, sum_res_year_2021

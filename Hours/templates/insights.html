@@ -11,23 +11,101 @@
 </head>
 <body>
 
-<div class="container"> <p>You have worked a total of {{ totaltime[1]|float }} hours</p> </div>
+<div class="container"> <p>You have worked a total of {{ monthtime[12]|float }} hours in 2021 </p> </div>
 
 <div class="container"> <p>{{ viz_div|safe }} </p> </div>
 
 <div class="container"> <p>You generated most overtime on {{ overtimedata[2] }} by working {{ overtimedata[1]|float }} hours - This is a {{ overtimedata[4] }} </p> </div>
 <!-- <div class="container"> <p>The month you generated most overtime was:  </p> </div> -->
 
-<div class="container"> <p>Your average over-/ undertime is: {{ overtimedata[3]|float }} </p>
+<div class="container"> <p>Your average over-/ undertime is: {{ overtimedata[3]|float }} hours </p>
     {% if overtimedata[3] > 1.5|float %}
-    <p>Hi there, it seems like you are making too much overtime on average. Be mindful of your work-life-balance! Make sure you contact your Manager to readjust your projects.
+    <p>Hi there, it seems like you are making too much overtime on average. Be mindful of your work-life-balance! Make sure you contact your Manager to readjust your projects and not exceed 8 hours of work per day.
     If you want to learn more about our company policy on how to improve your work-life-balance please visit <a href="https://www.businessnewsdaily.com/5244-improve-work-life-balance-today.html" target="_blank"> Work-Life-Balance-Tips</a> </p>
 {% endif %} </div>
 
-<div class="container"> <p>Your total overtime is: {{ overtimedata[0]|float }}  </p>
+<div class="container"> <p>Your total overtime is: {{ overtimedata[0]|float }} hours </p>
     {% if overtimedata[0] > 40|float %}
     <p>Dear user. You have generate more than 40 working hours in overtime. Please contact HR to create a compensation plan</p> <a href="mailto:raphael@urbanetz.ch" target="_blank" class="btn btn-primary">Email Us</a>
 {% endif %} </div>
+
+<div class="container"> <p>This is your Total worktime overview and is calculated on the total amount of needed working
+hours for each month. At the end of the month you will see the total worked hours and aggregated overtime per month</p>
+</div>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th scope="col">Month</th>
+            <th scope="col">Hours worked</th>
+            <th scope="col">over-/undertime</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+            <td>January</td>
+            <td>{{ monthtime[0]|float }}</td>
+            <td>{{ (monthtime[0] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>February</td>
+            <td>{{ monthtime[1]|float }}</td>
+            <td>{{ (monthtime[1] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>March</td>
+            <td>{{ monthtime[2]|float }}</td>
+            <td>{{ (monthtime[2] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>April</td>
+            <td>{{ monthtime[3]|float }}</td>
+            <td>{{ (monthtime[3] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>May</td>
+            <td>{{ monthtime[4]|float }}</td>
+            <td>{{ (monthtime[4] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>June</td>
+            <td>{{ monthtime[5]|float }}</td>
+            <td>{{ (monthtime[5] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>July</td>
+            <td>{{ monthtime[6]|float }}</td>
+            <td>{{ (monthtime[6] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>August</td>
+            <td>{{ monthtime[7]|float }}</td>
+            <td>{{ (monthtime[7] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>September</td>
+            <td>{{ monthtime[8]|float }}</td>
+            <td>{{ (monthtime[8] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>October</td>
+            <td>{{ monthtime[9]|float }}</td>
+            <td>{{ (monthtime[9] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>November</td>
+            <td>{{ monthtime[10]|float }}</td>
+            <td>{{ (monthtime[10] - 160)|float }}</td>
+        </tr>
+      <tr>
+            <td>December</td>
+            <td>{{ monthtime[11]|float }}</td>
+            <td>{{ (monthtime[11] - 160)|float }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
 
 </body>
 </html>

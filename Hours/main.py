@@ -17,12 +17,12 @@ class MyForm(FlaskForm):   # create class to define what MyForm is - MyForm is b
     submit = SubmitField("Submit")  # variable for submit
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/home", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
 
-@app.route("/erfassen", methods=["GET", "POST"])
+@app.route("/submission", methods=["GET", "POST"])
 def erfassen():
     form_data = MyForm()  # instanzierung der klasse
     # confirmation_date = str(form_data.chosen_date.data)
@@ -34,12 +34,12 @@ def erfassen():
     return render_template("erfassen.html", form=form_data)
 
 
-@app.route("/uebersicht", methods=["GET", "POST"])
-def uebersicht():
+@app.route("/overview", methods=["GET", "POST"])
+def Day_by_Day():
     if request.method == "GET":
         datasave.ausgabe_total()
     daten = datasave.ausgabe_total()
-    return render_template("uebersicht.html", data=daten[0])  # returning data to call it via jinja later
+    return render_template("day_by_day.html", data=daten[0])  # returning data to call it via jinja later
 
 
 @app.route("/insights", methods=["GET", "POST"])
@@ -47,17 +47,19 @@ def insights():
     if request.method == "GET":
         datasave.ausgabe_overtime()
         datasave.ausgabe_total()
+    # plotly bar plot to visualize accumulated overtime
     working_hours_data = datasave.ausgabe_total()
     overtime_data = datasave.ausgabe_overtime()
+    monthly_data = datasave.monthly_aggregation()
     fig = px.bar(x=overtime_data[5].keys(), y=overtime_data[5].values(),
     labels = {
-                 "x" : "Datum",
-                 "y" : "Anzahl Ueberstunden",
+                 "x" : "Date",
+                 "y" : "Amount of Overtime",
              },
-             title = "Uebersicht Ueberstunden"
+             title = "Overtime per Date"
     )
     div = plot(fig, output_type="div")
-    return render_template("insights.html", overtimedata=overtime_data, viz_div=div, totaltime=working_hours_data)
+    return render_template("insights.html", overtimedata=overtime_data, viz_div=div, totaltime=working_hours_data, monthtime=monthly_data)
 
 
 if __name__ == "__main__":
