@@ -17,7 +17,7 @@ class MyForm(FlaskForm):   # create class to define what MyForm is - MyForm is b
     submit = SubmitField("Submit")  # variable for submit
 
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
@@ -56,7 +56,7 @@ def insights():
                  "x" : "Date",
                  "y" : "Amount of Overtime",
              },
-             title = "Overtime per Date"
+             title = "Over-/ undertime Timeline"
     )
     div = plot(fig, output_type="div")
     return render_template("insights.html", overtimedata=overtime_data, viz_div=div, totaltime=working_hours_data, monthtime=monthly_data)

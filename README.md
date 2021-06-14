@@ -11,7 +11,7 @@ Needed functions:
 3. User working and official hours check  - DONE
     3.1. Print over or undertime  DONE
 5. Print on which days most over- undertime is generated  - Reduced to specific day - DONE
-6. Visualize data - DONE - Visualizing in Chart format and Plot for overtime
+6. Visualize data - DONE - Visualizing in Chart format and Plot for overtime - DONE
 
 Step by step idea Frontend:
 
@@ -33,13 +33,13 @@ Zeiterfassung:
 2. User sees overtime/undertime highlighted - DONE
 
 Analyse: - Scrapped Idea
-1. User sees multiple charts  
+1. User sees multiple charts  - Changed to single graphical chart and table variant for clarity - DONE
     2.1 Total hours worked     
-        2.1.1 option to filter by week, month, year  
+        2.1.1 option to filter by week, month, year - DONE in Day by Day overview
     2.2 Overtime     
-        2.2.1 Total overtime  
+        2.2.1 Total overtime - DONE  
         2.2.2 Overtime occurence  
-            2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week
+            2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monhtly and Yearly overview - DONE
    
 
 
