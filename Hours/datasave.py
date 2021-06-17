@@ -170,8 +170,8 @@ def monthly_aggregation():
     #print("The original dictionary is: " + str(test_dict))
     #print("The original dictionary is: " + str(result_dict))
     for month in result_dict:
-        month_dict = {key: value for key, value in original_dict.items() if key.startswith(month)} # creating an additional month dictionary. key is key from original dict but restricted to month(key) from result dict
-        result_dict[month] = sum(month_dict.values()) #writing sum from month dict values into associated result dict (Could also do this in the step before but prefer it here)
+        month_dict = {key: value for key, value in original_dict.items() if key.startswith(month)} # creating an additional month dictionary. key is key from original dict but restricted to month(key) from result dict. startswith helps match the keys from original_dict file to result_dict
+        result_dict[month] = sum(month_dict.values()) #adding sum from month_dict values to associated key from result dict
     #print(result_dict)
     result_dict['2021'] = sum(result_dict.values()) #creating a new key in result dict "2021" with sum of all values as value
     #print(result_dict)
