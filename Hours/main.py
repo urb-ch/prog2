@@ -15,7 +15,7 @@ class MyForm(FlaskForm):   # create class to define what MyForm is - MyForm is b
     chosen_date = DateField("Please choose a date", format="%Y-%m-%d", validators=(validators.DataRequired(),))  # format the DateField(WTForms) and set a validator. this is required otherwise error is given
     hours = FloatField("Enter the amount of worked hours:  ", validators=(validators.DataRequired(),))  # Create StringField for the hours, validator needed, currently getting an error if I put one here as well
     submit = SubmitField("Submit")  # variable for submit
-
+    # https://github.com/CarlosIUSalazar/Python-Flask-DatePicker
 
 @app.route("/", methods=["GET", "POST"])
 def index():

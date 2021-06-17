@@ -15,7 +15,7 @@ Needed functions:
 
 Step by step idea Frontend:
 
-Mainpage:
+Homepage:
 1. User opens webapp
 2. User sees functions to choose   
    2.1 Zeiterfassung   
@@ -23,16 +23,16 @@ Mainpage:
    2.3 Analyse   
 3. User chooses desired function   
 
-Zeiterfassung:   
-1. User sees fields with Date on the left side and a text field to enter an amount of hours in the middle and a submit button on the right   - DONE
+Submit Time:   
+1. User sees fields with Date and a text field to enter an amount of hours in the middle and a submit button on the right   - DONE
 2. User enters hours worked to associated date in the text field   - DONE
 3. User presses the submit button  - DONE
 
-Übersicht:  
+Day by Day overview:  
 1. User sees an overview over his amount worked associated to the specific date - DONE
 2. User sees overtime/undertime highlighted - DONE
 
-Analyse: - Scrapped Idea
+Insight: - 
 1. User sees multiple charts  - Changed to single graphical chart and table variant for clarity - DONE
     2.1 Total hours worked     
         2.1.1 option to filter by week, month, year - DONE in Day by Day overview
@@ -41,6 +41,6 @@ Analyse: - Scrapped Idea
         2.2.2 Overtime occurence  
             2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monhtly and Yearly overview - DONE
    
-![Flowchart](Flowchart_Timetracker_Project.png)
+![Flowchart](Hours/static/Images/Flowchart_Timetracker_Project.png)
 
 
