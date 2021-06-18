@@ -48,7 +48,8 @@ Make sure you have following extensions installed:
 
 Flask  - https://flask.palletsprojects.com/en/2.0.x/installation/  
 WTForms  - https://wtforms.readthedocs.io/en/2.3.x/  
-Plotly  - https://plotly.com/python/getting-started/
+Plotly  - https://plotly.com/python/getting-started/  
+Pandas - https://pandas.pydata.org/docs/
 
 For the purpose of this project some data entries are already provided in dictionary format in Hours/arbeitsstunden.json 
 and Hours/ueberstunden.json. If you want to create your own Working hours 2021 report make sure to delete all entries in the respective files and provide a clean dictionary -> { }
