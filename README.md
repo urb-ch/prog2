@@ -35,8 +35,8 @@ Insight: - DONE
       1.1.1 option to filter by week, month, year - DONE in Day by Day overview   
     2.2 Overtime
         2.2.1 Total overtime - DONE    
-            2.2.2 Overtime occurence  - DONE Plotly viz.
-            2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monthly and Yearly overview - DONE
+            2.2.2 Overtime occurence  - DONE Plotly viz.   
+                2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monthly and Yearly overview - DONE
 
 
 Day by Day overview: - DONE
