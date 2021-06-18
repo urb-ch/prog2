@@ -4,9 +4,9 @@
 The user will enter their working hours and the data will be stored. The data will then be checked against the official working hours (8 hours) and over/undertime will be calculated. The user will get an overview how many hours he worked per day and get a report how much over- or undertime he currently has.
 The programm will also include a possibility to see when the user usually generates over- or undertime by using plotly visualization.
 
-<h3>Functions: </h3>
-1. User working hour entries  - DONE   
-   1.1 Daily overview (current date)   - DONE   
+<h3>Functions: </h3> 
+1. User working hour entries  - DONE  
+    1.1 Daily overview (current date)   - DONE
 2. Official working hours store  - DONE stored in JSON   
 3. User working and official hours check  - DONE  
     3.1. Print over or undertime - DONE  
@@ -32,9 +32,9 @@ Insight: - DONE
 1. User sees multiple charts  - Changed to single graphical chart and table variant for clarity - DONE     
     1.1 Total hours worked - DONE    
       1.1.1 option to filter by week, month, year - DONE in Day by Day overview   
-    2.2 Overtime  
+    2.2 Overtime
         2.2.1 Total overtime - DONE    
-        2.2.2 Overtime occurence  - DONE Plotly viz.
+            2.2.2 Overtime occurence  - DONE Plotly viz.
             2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monthly and Yearly overview - DONE
 
 
