@@ -31,12 +31,12 @@ Submit Time: - DONE
 
 Insight: - DONE  
 1. User sees multiple charts  - Changed to single graphical chart and table variant for clarity - DONE     
-    1.1 Total hours worked - DONE    
-      1.1.1 option to filter by week, month, year - DONE in Day by Day overview   
-    2.2 Overtime
-        2.2.1 Total overtime - DONE    
-            2.2.2 Overtime occurence  - DONE Plotly viz.   
-                2.2.2.1 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monthly and Yearly overview - DONE
+    1.1 Total hours worked - DONE  
+    1.2 option to filter by week, month, year - DONE in Day by Day overview
+2. Overtime   
+   2.1 Total overtime - DONE  
+   2.2 Overtime occurence  - DONE Plotly viz.  
+   2.3 Per Week of Year, Per Month of Year, Per Day of Week - Restricted to Daily, Monthly and Yearly overview - DONE
 
 
 Day by Day overview: - DONE
