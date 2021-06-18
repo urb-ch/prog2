@@ -5,6 +5,7 @@ The user will enter their working hours and the data will be stored. The data wi
 The programm will also include a possibility to see when the user usually generates over- or undertime by using plotly visualization.
 
 <h3>Functions: </h3> 
+
 1. User working hour entries  - DONE  
     1.1 Daily overview (current date)   - DONE
 2. Official working hours store  - DONE stored in JSON   
