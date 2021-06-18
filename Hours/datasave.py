@@ -22,13 +22,8 @@ def speichern(datei, hours, chosen_date):
 
     datei_inhalt[chosen_date] = hours
 
-    # print(datei_inhalt)
-
     with open(datei, "w") as open_file:
         json.dump(datei_inhalt, open_file, indent=4)
-# def stunden_erfassen(stunden):
-  # anzahl_stunden = stunden
-  # print(anzahl_stunden)
 
 def ausgabe_total():
     datei = "arbeitsstunden.json"
